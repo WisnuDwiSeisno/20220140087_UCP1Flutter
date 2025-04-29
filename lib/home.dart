@@ -24,7 +24,24 @@ class _HomePageState extends State<HomePage> {
                   radius: 30,
                   backgroundImage: AssetImage('images/logo.png'),
                 ),
-                SizedBox(width: 12),
+                SizedBox(width: 16,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Selamat Datang',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    Text(
+                      'Admin',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           )
