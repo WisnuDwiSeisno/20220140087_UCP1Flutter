@@ -260,9 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            
-                          }
+                          if (_formKey.currentState!.validate()) {}
                         },
                         child: const Text(
                           'Daftar',
@@ -275,7 +273,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Text('Sudah memiliki akun? Silahkan'),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           child: Text('Login di sini!'),
                         ),
                       ],
