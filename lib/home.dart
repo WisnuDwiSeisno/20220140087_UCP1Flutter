@@ -107,13 +107,13 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.supervised_user_circle_outlined,
+                                  Icons.grid_view_rounded,
                                   size: 40,
                                   color: Colors.white,
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  'Data Piket',
+                                  'Data Pelanggan',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
