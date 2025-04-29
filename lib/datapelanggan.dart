@@ -11,20 +11,13 @@ class _CustPageState extends State<CustPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController alamatController = TextEditingController();
   final TextEditingController provinsiController = TextEditingController();
-  final TextEditingController kodeposController =
-      TextEditingController();
+  final TextEditingController kodeposController = TextEditingController();
   final TextEditingController namacustController = TextEditingController();
   final TextEditingController nohpController = TextEditingController();
-
-  bool _isObscured = true;
-  bool _isObscuredConfirm = true;
 
   @override
   void initState() {
     super.initState();
-
-    _isObscured = true;
-    _isObscuredConfirm = true;
   }
 
   @override
@@ -74,14 +67,13 @@ class _CustPageState extends State<CustPage> {
                       controller: namacustController,
                       decoration: InputDecoration(
                         labelText: 'Nama Cust',
-                        prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Nama Lengkap tidak boleh kosong!';
+                          return 'Nama Cust tidak boleh kosong!';
                         }
                         return null;
                       },
@@ -108,7 +100,6 @@ class _CustPageState extends State<CustPage> {
                             controller: emailController,
                             decoration: InputDecoration(
                               labelText: 'Email',
-                              prefixIcon: Icon(Icons.email),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -141,7 +132,6 @@ class _CustPageState extends State<CustPage> {
                             controller: nohpController,
                             decoration: InputDecoration(
                               labelText: 'No HP',
-                              prefixIcon: Icon(Icons.phone),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -164,21 +154,23 @@ class _CustPageState extends State<CustPage> {
                   children: [
                     Text(
                       'Alamat',
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(height: 16),
                     TextFormField(
                       controller: alamatController,
                       decoration: InputDecoration(
                         labelText: 'Alamat',
-                        prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Nama Lengkap tidak boleh kosong!';
+                          return 'Alamat tidak boleh kosong!';
                         }
                         return null;
                       },
@@ -201,28 +193,14 @@ class _CustPageState extends State<CustPage> {
                           ),
                           SizedBox(height: 16),
                           TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
+                            keyboardType: TextInputType.text,
                             controller: provinsiController,
                             decoration: InputDecoration(
                               labelText: 'Provinsi',
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _isObscured
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isObscured = !_isObscured;
-                                  });
-                                },
-                              ),
-                              prefixIcon: Icon(Icons.lock),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
                             ),
-                            obscureText: _isObscured,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Provinsi tidak boleh kosong!';
@@ -247,28 +225,14 @@ class _CustPageState extends State<CustPage> {
                           ),
                           SizedBox(height: 16),
                           TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
+                            keyboardType: TextInputType.number,
                             controller: kodeposController,
                             decoration: InputDecoration(
                               labelText: 'Kode Pos',
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _isObscuredConfirm
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isObscuredConfirm = !_isObscuredConfirm;
-                                  });
-                                },
-                              ),
-                              prefixIcon: Icon(Icons.lock),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
                             ),
-                            obscureText: _isObscuredConfirm,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Kode Pos tidak boleh kosong!';
@@ -299,22 +263,30 @@ class _CustPageState extends State<CustPage> {
                           if (_formKey.currentState!.validate()) {}
                         },
                         child: const Text(
-                          'Daftar',
+                          'Simpan',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Sudah memiliki akun? Silahkan'),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text('Login di sini!'),
+                    SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
-                      ],
+                        onPressed: () {
+                        },
+                        child: const Text(
+                          'Reset',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 0, 162, 255),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
