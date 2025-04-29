@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:ucp1/detail.dart';
 
 class PiketPage extends StatefulWidget {
   const PiketPage({super.key});
@@ -13,6 +15,8 @@ class _PiketPageState extends State<PiketPage> {
   );
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController taskController = TextEditingController();
+  
+List<TugasPiket> tugasList = [];
 
   @override
   void initState() {
@@ -85,14 +89,20 @@ class _PiketPageState extends State<PiketPage> {
                   onTap: () async {
                     DateTime? pickedDate = await showDatePicker(
                       context: context,
+                      locale: const Locale(
+                        'id',
+                        'ID',
+                      ), 
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2101),
                     );
                     if (pickedDate != null) {
                       setState(() {
-                        tanggalController.text =
-                            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                        tanggalController.text = DateFormat(
+                          "EEEE, dd MMMM yyyy",
+                          "id_ID",
+                        ).format(pickedDate);
                       });
                     }
                   },
@@ -167,6 +177,16 @@ class _PiketPageState extends State<PiketPage> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
+                                  setState(() {
+                                    tugasList.add(
+                                      TugasPiket(
+                                        nama: namaController.text,
+                                        tanggal: tanggalController.text,
+                                        tugas: taskController.text,
+                                      ),
+                                    );
+                                    taskController.clear();
+                                  });
                                 }
                               },
                               child: Text(
@@ -180,12 +200,71 @@ class _PiketPageState extends State<PiketPage> {
                     ),
                   ],
                 ),
-                SizedBox(width: 8),
+                SizedBox(height: 16),
+                Center(
+                  child: Text(
+                    'Daftar Tugas Piket',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(height: 12),
+                if (tugasList.isNotEmpty) ...[
+                  ListView.builder(
+                    itemCount: tugasList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final tugas = tugasList[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => DetailPage(tugas: tugas),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          color:  Color.fromARGB(255, 0, 162, 255),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              tugas.tugas,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ],
             ),
           ),
         ),
       ),
     );
+  }
+}
+
+class TugasPiket {
+  final String nama;
+  final String tanggal;
+  final String tugas;
+
+  TugasPiket({
+    required this.nama,
+    required this.tanggal,
+    required this.tugas,
+  });
+
+  @override
+  String toString() {
+    return '$nama - $tanggal - $tugas';
   }
 }
