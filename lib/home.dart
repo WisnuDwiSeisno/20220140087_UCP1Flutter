@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/barang.dart';
+import 'package:ucp1/datapelanggan.dart';
 import 'package:ucp1/login.dart';
+import 'package:ucp1/piketgudang.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
+  
 }
 
 class _HomePageState extends State<HomePage> {
@@ -78,7 +82,14 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PiketPage(),
+                                ),
+                              );
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -108,7 +119,14 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CustPage(),
+                                ),
+                              );
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -140,7 +158,12 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DataBarangPage()),
+                        );
+                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

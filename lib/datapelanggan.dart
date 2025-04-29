@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/custsave.dart';
 
 class CustPage extends StatefulWidget {
   const CustPage({super.key});
@@ -261,7 +262,22 @@ class _CustPageState extends State<CustPage> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => CustSavePage(
+                                      customer: Customer(
+                                        nama: namacustController.text,
+                                        email: emailController.text,
+                                        nohp: nohpController.text,
+                                        alamat: alamatController.text,
+                                        provinsi: provinsiController.text,
+                                        kode: kodeposController.text,
+                                      ),
+                                    ),
+                              ),
+                            );
                           }
                         },
                         child: const Text(
