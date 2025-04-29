@@ -15,8 +15,8 @@ class _PiketPageState extends State<PiketPage> {
   );
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController taskController = TextEditingController();
-  
-List<TugasPiket> tugasList = [];
+
+  List<TugasPiket> tugasList = [];
 
   @override
   void initState() {
@@ -89,10 +89,7 @@ List<TugasPiket> tugasList = [];
                   onTap: () async {
                     DateTime? pickedDate = await showDatePicker(
                       context: context,
-                      locale: const Locale(
-                        'id',
-                        'ID',
-                      ), 
+                      locale: const Locale('id', 'ID'),
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2101),
@@ -224,7 +221,7 @@ List<TugasPiket> tugasList = [];
                           );
                         },
                         child: Card(
-                          color:  Color.fromARGB(255, 0, 162, 255),
+                          color: Color.fromARGB(255, 0, 162, 255),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -242,6 +239,14 @@ List<TugasPiket> tugasList = [];
                       );
                     },
                   ),
+                ] else ...[
+                  SizedBox(height: 200),
+                  Center(
+                    child: Text(
+                      'Tidak ada tugas piket',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
                 ],
               ],
             ),
@@ -257,11 +262,7 @@ class TugasPiket {
   final String tanggal;
   final String tugas;
 
-  TugasPiket({
-    required this.nama,
-    required this.tanggal,
-    required this.tugas,
-  });
+  TugasPiket({required this.nama, required this.tanggal, required this.tugas});
 
   @override
   String toString() {
