@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/home.dart';
 import 'package:ucp1/register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -42,76 +43,74 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
-                Form(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Email',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Email',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        prefixIcon: Icon(Icons.email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      SizedBox(height: 8),
-                      TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          prefixIcon: Icon(Icons.email),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Email tidak boleh kosong!';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Password',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    TextFormField(
+                      keyboardType: TextInputType.visiblePassword,
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isObscured
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                           ),
+                          onPressed: () {
+                            setState(() {
+                              _isObscured = !_isObscured;
+                            });
+                          },
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        'Password',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                        prefixIcon: Icon(Icons.lock),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      SizedBox(height: 8),
-                      TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _isObscured
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _isObscured = !_isObscured;
-                              });
-                            },
-                          ),
-                          prefixIcon: Icon(Icons.lock),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                        obscureText: _isObscured,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                      ),
-                    ],
-                  ),
+                      obscureText: _isObscured,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password tidak boleh kosong!';
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +127,14 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          }
                         },
                         child: Text(
                           'Login',
