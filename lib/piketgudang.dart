@@ -111,36 +111,74 @@ class _PiketPageState extends State<PiketPage> {
                   },
                 ),
                 SizedBox(height: 20),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Tugas Piket',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        controller: taskController,
-                        decoration: InputDecoration(
-                          labelText: 'Tugas Piket',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Tugas Piket',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Tugas tidak boleh kosong!';
-                          }
-                          return null;
-                        },
+                          SizedBox(height: 16),
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: taskController,
+                            decoration: InputDecoration(
+                              labelText: 'Tugas Piket',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tugas tidak boleh kosong!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 36),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 56,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color.fromARGB(
+                                  255,
+                                  0,
+                                  162,
+                                  255,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                }
+                              },
+                              child: Text(
+                                'Tambah',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(width: 8),
               ],
