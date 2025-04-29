@@ -101,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Masukan Email mu!';
+                                return 'Email tidak boleh kosong!';
                               }
                               return null;
                             },
@@ -110,6 +110,38 @@ class _RegisterPageState extends State<RegisterPage> {
                       )
                     ),
                     SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'No HP',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: emailController,
+                            decoration: InputDecoration(
+                              labelText: 'No HP',
+                              prefixIcon: Icon(Icons.phone),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'No HP tidak boleh kosong!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ],
