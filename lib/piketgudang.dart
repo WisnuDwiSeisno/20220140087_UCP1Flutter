@@ -12,6 +12,7 @@ class _PiketPageState extends State<PiketPage> {
     text: 'Admin',
   );
   final TextEditingController tanggalController = TextEditingController();
+  final TextEditingController taskController = TextEditingController();
 
   @override
   void initState() {
@@ -110,6 +111,38 @@ class _PiketPageState extends State<PiketPage> {
                   },
                 ),
                 SizedBox(height: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Tugas Piket',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: taskController,
+                        decoration: InputDecoration(
+                          labelText: 'Tugas Piket',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Tugas tidak boleh kosong!';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 8),
               ],
             ),
           ),
