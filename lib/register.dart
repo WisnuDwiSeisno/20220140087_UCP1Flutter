@@ -245,6 +245,43 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 60),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 0, 162, 255),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            
+                          }
+                        },
+                        child: const Text(
+                          'Daftar',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Sudah memiliki akun? Silahkan'),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text('Login di sini!'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
