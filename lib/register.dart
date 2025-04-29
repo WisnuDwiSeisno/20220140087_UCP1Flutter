@@ -23,6 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
 
     _isObscured = true;
+    _isObscuredConfirm = true;
   }
 
   @override
@@ -216,13 +217,13 @@ class _RegisterPageState extends State<RegisterPage> {
                               labelText: 'Konfirmasi Password',
                               suffixIcon: IconButton(
                                 icon: Icon(
-                                  _isObscured
+                                  _isObscuredConfirm
                                       ? Icons.visibility_off
                                       : Icons.visibility,
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    _isObscured = !_isObscured;
+                                    _isObscuredConfirm = !_isObscuredConfirm;
                                   });
                                 },
                               ),
@@ -231,7 +232,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                             ),
-                            obscureText: _isObscured,
+                            obscureText: _isObscuredConfirm,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Konfirmasi Password tidak boleh kosong!';
