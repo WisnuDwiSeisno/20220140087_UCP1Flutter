@@ -146,6 +146,54 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
+                SizedBox(height: 8),
+                Row(
+                  children: [
+                    Expanded(child: 
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Password',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: passwordController,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _isObscured
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscured = !_isObscured;
+                                  });
+                                },
+                              ),
+                              prefixIcon: Icon(Icons.lock),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            obscureText: _isObscured,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your password';
+                              }
+                              return null;
+                            },
+                          ),
+                      ],
+                    ))
+                  ],
+                )
               ],
             ),
           ),
