@@ -126,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           SizedBox(height: 8),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
-                            controller: emailController,
+                            controller: nohpController,
                             decoration: InputDecoration(
                               labelText: 'No HP',
                               prefixIcon: Icon(Icons.phone),
