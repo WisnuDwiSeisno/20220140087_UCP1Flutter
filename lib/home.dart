@@ -50,6 +50,13 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+              ),child: Image.asset('images/banner.png'),
+            ),
+            SizedBox(height: 16),
           ],
         ),
       ),
