@@ -10,7 +10,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmpasswordController = TextEditingController();
   final TextEditingController namalengkapController = TextEditingController();
+  final TextEditingController nohpController = TextEditingController();
 
   bool _isObscured = true;
 
