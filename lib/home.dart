@@ -123,6 +123,35 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 16),
+                  SizedBox(
+                    height: 160,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 0, 162, 255),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.receipt_long,
+                            size: 40,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Barang Masuk/Keluar',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
