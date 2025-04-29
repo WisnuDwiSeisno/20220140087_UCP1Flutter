@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/register.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -127,9 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            
-                          }
+                          if (_formKey.currentState!.validate()) {}
                         },
                         child: Text(
                           'Login',
@@ -143,6 +142,12 @@ class _LoginPageState extends State<LoginPage> {
                         Text('Belum memiliki akun? Silahkan'),
                         TextButton(
                           onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegisterPage(),
+                              ),
+                            );
                           },
                           child: Text('Daftar di sini!'),
                         ),
