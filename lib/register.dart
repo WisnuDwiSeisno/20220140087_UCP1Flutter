@@ -185,7 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             obscureText: _isObscured,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter your password';
+                                return 'Password tidak boleh kosong!';
                               }
                               return null;
                             },
