@@ -10,6 +10,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(child: 
+      Column(
+        children: [
+          Container(
+            color: Color.fromARGB(255, 0, 162, 255),
+            padding: EdgeInsets.all(16),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage('images/logo.png'),
+                ),
+                SizedBox(width: 12),
+              ],
+            ),
+          )
+        ],
+      )),
+    );
   }
 }
