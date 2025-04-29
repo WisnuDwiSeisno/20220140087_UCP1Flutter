@@ -16,6 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController nohpController = TextEditingController();
 
   bool _isObscured = true;
+  bool _isObscuredConfirm = true;
 
   @override
   void initState() {
