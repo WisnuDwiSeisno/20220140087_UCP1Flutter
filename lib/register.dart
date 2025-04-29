@@ -48,8 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
-                Form(
-                  child: Column(
+                Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -71,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Masukan Nama Lengkap mu!';
+                            return 'Nama Lengkap tidak boleh kosong!';
                           }
                           return null;
                         },
@@ -79,7 +78,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       SizedBox(height: 16),
                     ],
                   ),
-                ),
                 Row(
                   children: [
                     Expanded(
