@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,7 +45,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
                     icon: Icon(Icons.logout, color: Colors.white),
                   ),
                 ],
