@@ -10,7 +10,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmpasswordController = TextEditingController();
+  final TextEditingController confirmpasswordController =
+      TextEditingController();
   final TextEditingController namalengkapController = TextEditingController();
   final TextEditingController nohpController = TextEditingController();
 
@@ -56,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 16),
                       TextFormField(
                         controller: namalengkapController,
                         decoration: InputDecoration(
@@ -73,24 +74,24 @@ class _RegisterPageState extends State<RegisterPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 16),
                     ],
                   ),
                 ),
                 Row(
                   children: [
                     Expanded(
-                      child: 
-                      Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Email',
+                          Text(
+                            'Email',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 16),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
                             controller: emailController,
@@ -109,7 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             },
                           ),
                         ],
-                      )
+                      ),
                     ),
                     SizedBox(width: 8),
                     Expanded(
@@ -123,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 16),
                           TextFormField(
                             keyboardType: TextInputType.phone,
                             controller: nohpController,
@@ -146,20 +147,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 16),
                 Row(
                   children: [
-                    Expanded(child: 
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Password',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Password',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 16),
                           TextFormField(
                             keyboardType: TextInputType.visiblePassword,
                             controller: passwordController,
@@ -190,10 +192,57 @@ class _RegisterPageState extends State<RegisterPage> {
                               return null;
                             },
                           ),
-                      ],
-                    ))
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Konfirmasi Password',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: confirmpasswordController,
+                            decoration: InputDecoration(
+                              labelText: 'Konfirmasi Password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _isObscured
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscured = !_isObscured;
+                                  });
+                                },
+                              ),
+                              prefixIcon: Icon(Icons.lock),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                            obscureText: _isObscured,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Konfirmasi Password tidak boleh kosong!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
