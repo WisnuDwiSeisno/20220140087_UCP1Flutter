@@ -260,7 +260,9 @@ class _CustPageState extends State<CustPage> {
                           ),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+
+                          }
                         },
                         child: const Text(
                           'Simpan',
@@ -279,6 +281,12 @@ class _CustPageState extends State<CustPage> {
                           ),
                         ),
                         onPressed: () {
+                          emailController.clear();
+                          alamatController.clear();
+                          provinsiController.clear();
+                          kodeposController.clear();
+                          namacustController.clear();
+                          nohpController.clear();
                         },
                         child: const Text(
                           'Reset',
@@ -296,5 +304,28 @@ class _CustPageState extends State<CustPage> {
         ),
       ),
     );
+  }
+}
+
+class Customer {
+  String nama;
+  String email;
+  String nohp;
+  String alamat;
+  String provinsi;
+  String kode;
+
+  Customer({
+    required this.nama,
+    required this.email,
+    required this.nohp,
+    required this.alamat,
+    required this.provinsi,
+    required this.kode,
+  });
+
+  @override
+  String toString() {
+    return '$nama - $email - $nohp - $alamat - $provinsi - $kode';
   }
 }
